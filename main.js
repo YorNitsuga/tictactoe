@@ -18,3 +18,26 @@ const Gameboard = (() => {
 
     return { getBoard, resetBoard, setCell };
 })();
+
+// PLAYER FACTORY FUNCTION THAT CREATES PLAYER OBJECTS
+const Player = (name, symbol) => {
+    return { name, symbol };
+};
+
+// MODULE THAT HANDLES THE GAME LOGIC
+const GameController = (() => {
+    let players = [];
+    let currentPlayerIndex = 0;
+    let gameOver = false;
+
+    const startGame = (player1Name, player2Name) => {
+        players = [
+            Player(player1Name, "X"),
+            Player(player2Name, "O")
+        ];
+        currentPlayerIndex = 0;
+        gameOver = false;
+        Gameboard.resetBoard();
+        DisplayController.renderBoard();
+        DisplayController.updateResult("");
+    };
