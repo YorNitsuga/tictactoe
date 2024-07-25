@@ -41,3 +41,22 @@ const GameController = (() => {
         DisplayController.renderBoard();
         DisplayController.updateResult("");
     };
+    
+    const playRound = (cellIndex) => {
+        if (gameOver) return;
+
+        const currentPlayer = players[currentPlayerIndex];
+        if (Gameboard.setCell(cellIndex, currentPlayer.symbol)) {
+            if (checkWin()) {
+                gameOver = true;
+                DisplayController.updateResult(`${currentPlayer.name} wins!`);
+            } else if (checkTie()) {
+                gameOver = true;
+                DisplayController.updateResult("It's a tie!");
+            } else {
+                currentPlayerIndex = 1 - currentPlayerIndex; // Switch player
+                DisplayController.renderBoard();
+            }
+        }
+    };
+})();
