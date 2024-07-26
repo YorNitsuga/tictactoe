@@ -74,5 +74,9 @@ const GameController = (() => {
         });
     };
 
-    
+    const checkTie = () => {
+        return Gameboard.getBoard().every(cell => cell !== "");
+    };
+
+    return { startGame, playRound };
 })();
