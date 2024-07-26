@@ -80,3 +80,15 @@ const GameController = (() => {
 
     return { startGame, playRound };
 })();
+
+// MODULE THAT HANDLES THE UI UPDATES
+const DisplayController = (() => {
+    const gameboardDiv = document.getElementById("gameboard");
+    const resultsDiv = document.getElementById("results");
+    const restartButton = document.getElementById("restart");
+
+    restartButton.addEventListener("click", () => {
+        GameController.startGame("Player 1", "Player 2");
+    });
+
+})();
