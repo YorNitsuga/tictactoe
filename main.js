@@ -91,4 +91,11 @@ const DisplayController = (() => {
         GameController.startGame("Player 1", "Player 2");
     });
 
+    gameboardDiv.addEventListener("click", (e) => {
+        if (e.target && e.target.nodeName === "DIV") {
+            const index = Array.prototype.indexOf.call(gameboardDiv.children, e.target);
+            GameController.playRound(index);
+        }
+    });
+    
 })();
